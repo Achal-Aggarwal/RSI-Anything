@@ -2,7 +2,7 @@
 
 [Project](../README.md) · [简体中文](benchmarks.zh-CN.md)
 
-RSI-Anything connects candidate generation, predicted outcomes and interaction feedback across five domains. The repository provides runnable code-repair and browser-GUI workflows; this page describes the paper's code and GUI benchmark comparisons.
+RSI-Anything connects candidate generation, predicted outcomes and interaction feedback across five domains. This page describes the paper's code and GUI benchmark comparisons.
 
 ## Code repair
 
@@ -31,7 +31,7 @@ The agent observes an interface, proposes actions, uses predicted outcomes to se
 
 ### MiniWoB++
 
-The released browser workflow uses `click-checkboxes`: select the checkboxes named in the instruction and submit the form. Evaluation uses the same 100 test instances across three retained controller versions, with a limit of 120 seconds and eight actions per episode.
+The browser workflow uses `click-checkboxes`: select the checkboxes named in the instruction and submit the form. Evaluation uses the same 100 test instances across three retained controller versions, with a limit of 120 seconds and eight actions per episode.
 
 | Metric | Initial | Intermediate | Final |
 | :--- | ---: | ---: | ---: |
@@ -57,7 +57,7 @@ RSI-Anything also improves success by **5.5% relative to RLAnything**. Relative 
 
 ## Implementation guides
 
-| Released workflow | Entry point |
+| Workflow | Entry point |
 | :--- | :--- |
 | Code repair: CodeContests training and evaluation | [Environment, assets and reproduction](reproduction.en.md) |
 | GUI: MiniWoB++ browser training and evaluation | [Task guide](../tasks/gui/README.md) |

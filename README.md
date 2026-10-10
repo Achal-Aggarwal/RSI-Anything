@@ -29,8 +29,6 @@
 
 The paper applies this process to **code repair, GUI interaction, laboratory planning, reaction optimization and immune science**. Each domain supplies its own state, actions, prediction targets and feedback, while using the same cycle of proposing candidates, anticipating consequences, evaluating selected actions and retaining improvements for subsequent rounds.
 
-This release provides **two runnable implementations: code repair and GUI interaction**, with a common command-line workflow for collection, training and evaluation.
-
 ## Framework
 
 <p align="center">

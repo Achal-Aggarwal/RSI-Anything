@@ -4,7 +4,7 @@ Part of the RSI-Anything repository. See [repository integration](INTEGRATION.md
 
 Research code for **expert-assisted GUI policy adaptation with JEPA-Anything world models** on the official MiniWoB++ `click-checkboxes` task.
 
-This release contains the complete collection, world-model training, policy adaptation, controller selection, crossed evaluation, conditional confirmation, and completion-audit pipeline. Source history and verification records are in [provenance](docs/PROVENANCE.md) and [verification](docs/VERIFICATION.md).
+The GUI workflow connects collection, world-model training, policy adaptation, controller selection, crossed evaluation, conditional confirmation and completion auditing. Source history and verification records are in [provenance](docs/PROVENANCE.md) and [verification](docs/VERIFICATION.md).
 
 ## Reported results
 
