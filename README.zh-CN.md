@@ -64,7 +64,7 @@
 
 ## 实验结果
 
-各领域实验结果：
+各领域实验结果；任务定义、比较设置和指标解读见[基准说明](docs/benchmarks.zh-CN.md)：
 
 | 领域 | 评价设置 | RSI-Anything 结果 |
 | :--- | :--- | :--- |
@@ -87,7 +87,9 @@
 
 图中展示代码修复流程（**a**）、CodeContests 成功率、预测质量与反馈开销（**b–d**），以及 APPS Introductory 和 LiveCodeBench 结果（**e–f**）。代码策略每轮提出四个修改候选，最多运行三轮反馈修复。在线测试提供修复反馈，基准评价测试衡量最终成功率，结果取三个种子的平均值。
 
-[查看矢量图](docs/media/figure2-code-repair.pdf) · [代码修复指南](tasks/code_repair/README.md)
+**APPS Introductory 与 LiveCodeBench v6** 将修复评价扩展到 1,000 道和 1,055 道题。同一道题、同一个种子下，各方法共用初始程序与 ReasonFlux-Coder-7B 策略，以公开测试指导修复，以完整官方测试集判定最终成功。三个种子的平均完整测试通过率分别达到 **46.37%** 和 **33.05%**。
+
+[查看矢量图](docs/media/figure2-code-repair.pdf) · [基准设置](docs/benchmarks.zh-CN.md#apps-introductory-与-livecodebench) · [代码修复指南](tasks/code_repair/README.md)
 
 ### GUI 交互
 
@@ -97,7 +99,9 @@
 
 在同一组 100 个复选框测试任务上，选定控制器在三个保留版本中分别完成 **51、79、99** 个任务。平均动作数从 **5.30 降至 3.21**，重复点击从 **237 次降至 0 次**。成功要求所有复选框状态符合指令并完成提交，限时 120 秒、最多八次动作。
 
-控制器定义、评价集合和完整统计见 [GUI 结果](tasks/gui/docs/RESULTS.md)。
+**OSWorld** 将 GUI 评价扩展到桌面任务。RSI-Anything 的任务成功率较初始 Agent **相对提升 18.4%**，较 RLAnything **相对提升 5.5%**；RLAnything 较初始 Agent 相对提升 12.3%。
+
+控制器定义、评价集合和完整统计见 [GUI 结果](tasks/gui/docs/RESULTS.md)，桌面任务比较见 [OSWorld 设置](docs/benchmarks.zh-CN.md#osworld)。
 
 ## 快速开始
 

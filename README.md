@@ -66,7 +66,7 @@ Domain adapters connect the shared workflow to each task's states, action space 
 
 ## Results
 
-Results across domains:
+Results across domains. See [benchmark settings](docs/benchmarks.md) for task definitions, comparison protocols and metric interpretation:
 
 | Domain | Evaluation | RSI-Anything result |
 | :--- | :--- | :--- |
@@ -89,7 +89,9 @@ Results across domains:
 
 The figure connects the repair workflow (**a**) with CodeContests success, prediction quality and feedback use (**b–d**), and results on APPS Introductory and LiveCodeBench (**e–f**). The policy proposes four revisions per round, with up to three feedback rounds. Online tests provide repair feedback; final success is measured on the benchmark's evaluation tests. Results are averaged over three seeds.
 
-[View the vector figure](docs/media/figure2-code-repair.pdf) · [Code-repair guide](tasks/code_repair/README.md)
+**APPS Introductory and LiveCodeBench v6** extend the repair evaluation to 1,000 and 1,055 problems. Methods share the initial program and ReasonFlux-Coder-7B policy for each problem and seed; public tests guide repair and the complete official suite determines final success. Mean full-test success across three seeds reaches **46.37%** and **33.05%**, respectively.
+
+[View the vector figure](docs/media/figure2-code-repair.pdf) · [Benchmark settings](docs/benchmarks.md#apps-introductory-and-livecodebench) · [Code-repair guide](tasks/code_repair/README.md)
 
 ### GUI interaction
 
@@ -99,7 +101,9 @@ The figure connects the repair workflow (**a**) with CodeContests success, predi
 
 On the same 100 checkbox test instances, the selected controller completes **51 → 79 → 99** tasks across three retained versions. Mean actions decrease from **5.30 to 3.21**, and repeated clicks fall from **237 to 0**. Success requires all checkbox states to match the instruction and the form to be submitted, within 120 seconds and eight actions.
 
-See [GUI results](tasks/gui/docs/RESULTS.md) for controller definitions, evaluation cohorts and complete tables.
+**OSWorld** extends the GUI evaluation to desktop tasks. RSI-Anything improves task success by **18.4% relative to the initial agent** and **5.5% relative to RLAnything**; RLAnything improves by 12.3% relative to the initial agent.
+
+See [GUI results](tasks/gui/docs/RESULTS.md) for controller definitions, evaluation cohorts and complete tables, and [OSWorld settings](docs/benchmarks.md#osworld) for the desktop comparison.
 
 ## Quick Start
 
@@ -120,7 +124,7 @@ rsi tasks
 
 | Implementation | Guide | Workflow recipe |
 | :--- | :--- | :--- |
-| **Code repair** | [Environment, assets and reproduction](docs/reproduction.md) | `configs/code_repair/default.json` |
+| **Code repair** | [Environment, assets and reproduction](docs/reproduction.en.md) | `configs/code_repair/default.json` |
 | **GUI interaction** | [Complete browser-agent experiment](tasks/gui/README.md) | `configs/gui/default.json` |
 
 On Linux, follow the task guide to prepare `.venv-code-repair` or `.venv-gui`, and set runtime paths and GPU assignments in the recipe. Then launch the corresponding workflow:
