@@ -21,6 +21,8 @@
   <img src="https://img.shields.io/badge/License-Apache--2.0-2563EB?style=flat-square" alt="Apache-2.0 许可证">
 </p>
 
+更多数据集将发布在 [Hugging Face](https://huggingface.co/datasets/Gen-Verse/RSI-Anything)。
+
 ## 项目介绍
 
 **RSI-Anything** 是一个跨领域递归自我改进框架，将世界模型预测与真实交互反馈结合起来。它基于 **JEPA-Anything**，将候选生成、预测引导的选择、外部评价和学习连接成统一流程。

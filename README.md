@@ -23,6 +23,8 @@
   <img src="https://img.shields.io/badge/License-Apache--2.0-2563EB?style=flat-square" alt="Apache-2.0 license">
 </p>
 
+More datasets will be released on [Hugging Face](https://huggingface.co/datasets/Gen-Verse/RSI-Anything).
+
 ## Overview
 
 **RSI-Anything** is a domain-general framework that turns world-model predictions and interaction feedback into recursive self-improvement. Built on **JEPA-Anything**, it connects candidate generation, prediction-guided selection, external evaluation and learning in a shared process.
