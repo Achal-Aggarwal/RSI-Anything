@@ -23,7 +23,11 @@
   <img src="https://img.shields.io/badge/License-Apache--2.0-2563EB?style=flat-square" alt="Apache-2.0 license">
 </p>
 
-More datasets will be released on [Hugging Face](https://huggingface.co/datasets/Gen-Verse/RSI-Anything).
+<p align="center">
+  <a href="https://huggingface.co/datasets/Gen-Verse/RSI-Anything">
+    <img src="https://img.shields.io/badge/Hugging%20Face-RSI--Anything-FFB000?style=plastic&amp;logo=huggingface&amp;logoColor=FFD21E&amp;labelColor=555555" alt="Hugging Face · RSI-Anything" height="28">
+  </a>
+</p>
 
 ## Overview
 
