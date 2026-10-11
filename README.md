@@ -79,7 +79,7 @@ Results across domains. See [benchmark settings](docs/benchmarks.md) for task de
 | Code repair | LiveCodeBench v6, 1,055 problems | **33.05%** final full-test success |
 | GUI interaction | MiniWoB++ `click-checkboxes` | **99%** task success; **39.4%** fewer actions than the baseline |
 | GUI interaction | OSWorld | **18.4%** relative success-rate gain over the initial agent |
-| Laboratory planning | LabHorizon F200, Level 2 | **21.80% → 46.01%** across five successive 4B policy versions |
+| Laboratory planning | [LabHorizon F200, Level 2](tasks/laboratory_planning/README.md) | **21.80% → 46.01%** across five successive 4B policy versions |
 | Reaction optimization | Flow LC–MS screen, 40 experiments | **96.15%** mean best observed yield versus **82.16%** for Bayesian optimization |
 | Immune science | End-to-end scientific application | Prospective nomination combining **SIRPα inhibition and IL-36γ-axis modulation** for experimental testing |
 
@@ -131,6 +131,8 @@ rsi tasks
 | **Code repair** | [Environment, assets and reproduction](docs/reproduction.en.md) | `configs/code_repair/default.json` |
 | **GUI interaction** | [Complete browser-agent experiment](tasks/gui/README.md) | `configs/gui/default.json` |
 
+For laboratory planning, follow the [inference guide](tasks/laboratory_planning/README.md) to generate plans with the final policy or select candidates with the JEPA world model.
+
 On Linux, follow the task guide to prepare `.venv-code-repair` or `.venv-gui`, and set runtime paths and GPU assignments in the recipe. Then launch the corresponding workflow:
 
 ```bash
@@ -175,7 +177,8 @@ rsi report --run runs/gui
 ├── src/rsi_anything/      # Shared CLI, workflow runner and task adapters
 ├── tasks/
 │   ├── code_repair/       # Program execution, training and evaluation
-│   └── gui/               # Browser interaction, training and evaluation
+│   ├── gui/               # Browser interaction, training and evaluation
+│   └── laboratory_planning/ # Planning-policy and JEPA world-model inference
 ├── configs/              # Task recipes
 ├── tests/                # Shared workflow checks
 ├── scripts/              # Asset packaging and repository verification

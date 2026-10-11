@@ -77,7 +77,7 @@
 | 代码修复 | LiveCodeBench v6，1,055 道题 | 最终完整测试通过率 **33.05%** |
 | GUI 交互 | MiniWoB++ `click-checkboxes` | 任务成功率 **99%**，平均动作数较基线减少 **39.4%** |
 | GUI 交互 | OSWorld | 相对初始 Agent 的成功率提升 **18.4%** |
-| 实验室规划 | LabHorizon F200 Level 2 | 五个连续 4B 策略版本从 **21.80% 提高到 46.01%** |
+| 实验室规划 | [LabHorizon F200 Level 2](tasks/laboratory_planning/README.zh-CN.md) | 五个连续 4B 策略版本从 **21.80% 提高到 46.01%** |
 | 反应优化 | Flow LC–MS 筛选，40 次实验 | 平均最优实测产率 **96.15%**，贝叶斯优化为 **82.16%** |
 | 免疫科学 | 端到端科学应用 | 提出结合 **SIRPα 抑制与 IL-36γ 轴调节**的候选方案，用于后续实验检验 |
 
@@ -129,6 +129,8 @@ rsi tasks
 | **代码修复** | [环境、资产与复现](docs/reproduction.md) | `configs/code_repair/default.json` |
 | **GUI 交互** | [完整浏览器 Agent 实验](tasks/gui/README_zh.md) | `configs/gui/default.json` |
 
+实验室规划见[推理指南](tasks/laboratory_planning/README.zh-CN.md)，可使用最终策略生成方案，或由 JEPA 世界模型选择候选方案。
+
 在 Linux 上按照任务指南准备 `.venv-code-repair` 或 `.venv-gui`，并在配置中设置运行路径和 GPU 分配，然后启动对应工作流：
 
 ```bash
@@ -173,7 +175,8 @@ rsi report --run runs/gui
 ├── src/rsi_anything/      # 统一命令行、工作流调度与任务适配器
 ├── tasks/
 │   ├── code_repair/       # 程序执行、训练与评价
-│   └── gui/               # 浏览器交互、训练与评价
+│   ├── gui/               # 浏览器交互、训练与评价
+│   └── laboratory_planning/ # 规划策略与 JEPA 世界模型推理
 ├── configs/              # 任务配置
 ├── tests/                # 公共工作流检查
 ├── scripts/              # 资产打包与仓库校验

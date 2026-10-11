@@ -10,6 +10,8 @@ Built with Qwen.
 | Qwen2.5-Coder-3B-Instruct | Qwen Research License; `tasks/gui/licenses/Qwen2.5-Coder-3B-Instruct.LICENSE`; base revision pinned in the asset catalog |
 | ReasonFlux-Coder-7B | Upstream model card identifies MIT; retain its model card and underlying base-model notices with downloaded weights |
 | CodeContests | Upstream code: Apache-2.0; non-code materials: CC BY 4.0, with the source-specific notices listed upstream |
+| Laboratory JEPA-Anything inference | Apache-2.0; `tasks/laboratory_planning/licenses/JEPA-Anything.LICENSE` |
+| LabHorizon plan parser | MIT; `tasks/laboratory_planning/licenses/LabHorizon-parser.LICENSE` |
 
 Model and adapter releases include their own license materials and base-model
 identity. The Qwen 3B model's research license applies to its use and derivatives;
