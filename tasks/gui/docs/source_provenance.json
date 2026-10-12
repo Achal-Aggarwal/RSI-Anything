@@ -40,7 +40,9 @@
       "original_sha256": "9c024eb08e18b9af62a6a24659b9be1c52d9012a354f3827401918a8187f5c54",
       "origin": "validated experiment source",
       "release_path": "src/rsi_anything_gui/audit.py",
-      "release_sha256": "123d71fe3167921235da9c1e0db50f04c8b28d77acde6f229a4b27bc680788cf"
+      "release_sha256": "f34a89289def3243fa31aa4ee81e1f1fa76b3fe351c24b4b5a958646254d1afb",
+      "baseline_release_sha256": "123d71fe3167921235da9c1e0db50f04c8b28d77acde6f229a4b27bc680788cf",
+      "runtime_update": "Audit timeout endpoints, including episodes with no applied actions."
     },
     {
       "original_sha256": "0f5b72246202262645f1451d3d6cb41a4c799a270dcc0f9250b1dc3da57b4424",
@@ -65,13 +67,17 @@
       "original_sha256": "900787738a70ac2745668f170c3ff71a0d768e27d64788f00e7276a3531cfeff",
       "origin": "validated experiment source",
       "release_path": "src/rsi_anything_gui/gui_env.py",
-      "release_sha256": "47de761c7b53534efa8a38846927bfd41c976cc9660d02804efb64bda37fb5ee"
+      "release_sha256": "530afdfd0c16de56325217e33ebebe61f167ccc4c46307f0fb73b12aae7bda10",
+      "baseline_release_sha256": "47de761c7b53534efa8a38846927bfd41c976cc9660d02804efb64bda37fb5ee",
+      "runtime_update": "Expose the final observation when an episode expires before an action."
     },
     {
       "original_sha256": "6014171a4e26cd495d76bc79dd39b17d6f94e1f54a42a75aa6f061e7d3dc1c24",
       "origin": "validated experiment source",
       "release_path": "src/rsi_anything_gui/experiment.py",
-      "release_sha256": "acce4677369202a48334c8301ed39094b28a13b8b58601d3d7e125c9707da84f"
+      "release_sha256": "49edcf1774ac8ac74f985877cd7cc305b7adbfde156fd687eca12aea4026a3c3",
+      "baseline_release_sha256": "acce4677369202a48334c8301ed39094b28a13b8b58601d3d7e125c9707da84f",
+      "runtime_update": "Commit timeout failures and continue remaining rollout instances."
     },
     {
       "original_sha256": "60b00222006353a4048162d7a93a6b3067597c1c85b6cb3e605d9cc3d1b7eee4",

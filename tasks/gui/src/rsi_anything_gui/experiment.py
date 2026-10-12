@@ -2,7 +2,7 @@
 import argparse,json,random,time,math,urllib.request
 from pathlib import Path
 from .common import ROOT,PORT,atomic,atomic_jsonl,context,correctness,digest,label_transition,read_jsonl,legal_actions,checkpoint_identity,effective_cost
-from .gui_env import GUIEnv,rule_action
+from .gui_env import GUIEnv,EpisodeTerminated,rule_action
 
 def rank(obs,adapter=None):
     visible={k:obs[k] for k in ['instruction','elements','remaining_actions']}
@@ -32,22 +32,38 @@ def select(proposal,forecasts,controller):
 
 def episode(env,seed,method='policy',model=None,adapter=None,controller=None):
     wall_started=time.time()
-    obs=env.reset(seed);initial={k:obs[k] for k in ['instruction','elements']}
+    obs=env.reset(seed);initial_observation=obs;initial={k:obs[k] for k in ['instruction','elements']}
     started=time.monotonic();trace=[];actions=[];policy_seconds=world_seconds=browser_seconds=0.;hits=0
+    termination=None
     controller=controller or {'alpha':'pure'}
     for step in range(8):
-        if obs['done']:break
+        if obs['done']:
+            if not trace:
+                termination={'reason':obs.get('termination_reason','environment'),'before':obs,'after':obs}
+            break
         proposal=forecasts=selection=None
         if method=='rule':action=rule_action(obs)
         else:
             proposal=rank(obs,adapter);policy_seconds+=proposal['seconds'];hits+=int(proposal['cached'])
             enabled=method in ['world','hybrid'] and controller['alpha']!=0
             if enabled:
+                current=env.observe()
+                if current['done']:
+                    termination={'reason':current.get('termination_reason','environment'),'before':obs,'after':current}
+                    obs=current;break
                 if model is None:raise RuntimeError('World selection without a model')
                 forecasts,elapsed=model.forecast([context(obs,a) for a in proposal['actions']]);world_seconds+=elapsed
             index,selection=select(proposal,forecasts,controller if method!='policy' else {'alpha':0.})
             action=proposal['actions'][index]
-        after,elapsed=env.step(action);browser_seconds+=elapsed
+        browser_started=time.monotonic()
+        try:
+            after,elapsed=env.step(action)
+        except EpisodeTerminated as error:
+            browser_seconds+=time.monotonic()-browser_started
+            after=error.observation
+            termination={'reason':after.get('termination_reason','environment'),'before':obs,'after':after}
+            obs=after;break
+        browser_seconds+=elapsed
         row=label_transition(obs,action,after,elapsed,f'{seed}:t0',step)
         row.update(proposal=proposal,forecast=forecasts,selection=selection)
         trace.append(row);actions.append(action);obs=after
@@ -55,11 +71,12 @@ def episode(env,seed,method='policy',model=None,adapter=None,controller=None):
     for row in trace:row['episode_success']=success
     clicks=[a['slot'] for a in actions if a['kind']=='click']
     result={'episode_id':f'{seed}:t0','seed':seed,'initial_hash':digest(initial),'success':success,'steps':len(actions),
-            'actions':actions,'final':obs,'wrong_submit':int(obs['submitted'] and not success),'repeated_clicks':len(clicks)-len(set(clicks)),
+            'actions':actions,'initial':initial_observation,'final':obs,'wrong_submit':int(obs['submitted'] and not success),'repeated_clicks':len(clicks)-len(set(clicks)),
             'partial_fraction':correctness(obs),'seconds':time.monotonic()-started,'policy_nominal_seconds':policy_seconds,
             'world_seconds':world_seconds,'browser_seconds':browser_seconds,'cached_policy_requests':hits,
             'method':method,'adapter':str(adapter) if adapter else None,'controller':controller if method!='policy' else {'alpha':0.},
             'started':wall_started,'completed':time.time()}
+    if termination is not None:result['termination']=termination
     return result,trace
 
 def rollout(seeds,path,method='policy',model=None,adapter=None,controller=None):

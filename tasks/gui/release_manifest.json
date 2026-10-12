@@ -97,8 +97,8 @@
       "sha256": "4aa337bb4ac3239efaeb8585383a1153aa96670833bc7955dbc35a9a78161c3c"
     },
     "docs/source_provenance.json": {
-      "bytes": 153740,
-      "sha256": "71c8eb9832bc7993502d98ea242570279f3b6de9bab620b0eaebf8c01b8903ca"
+      "bytes": 154330,
+      "sha256": "c319d1c81a6467daf589b6807bebf88d96329c1b34970aae693a83912af82865"
     },
     "docs/verification_summary.json": {
       "bytes": 1371,
@@ -1625,8 +1625,8 @@
       "sha256": "6d65a7b3bb75cc810a38498f9be4747026a806364545e629836bcec103fdbc77"
     },
     "src/rsi_anything_gui/audit.py": {
-      "bytes": 22428,
-      "sha256": "123d71fe3167921235da9c1e0db50f04c8b28d77acde6f229a4b27bc680788cf"
+      "bytes": 23900,
+      "sha256": "f34a89289def3243fa31aa4ee81e1f1fa76b3fe351c24b4b5a958646254d1afb"
     },
     "src/rsi_anything_gui/cli.py": {
       "bytes": 3466,
@@ -1645,12 +1645,12 @@
       "sha256": "05bbe116ef5e1de3f2e159b220f3441b6aadc68f2ecbcb59c6fb317f804ea96d"
     },
     "src/rsi_anything_gui/experiment.py": {
-      "bytes": 11770,
-      "sha256": "acce4677369202a48334c8301ed39094b28a13b8b58601d3d7e125c9707da84f"
+      "bytes": 12650,
+      "sha256": "49edcf1774ac8ac74f985877cd7cc305b7adbfde156fd687eca12aea4026a3c3"
     },
     "src/rsi_anything_gui/gui_env.py": {
-      "bytes": 3840,
-      "sha256": "47de761c7b53534efa8a38846927bfd41c976cc9660d02804efb64bda37fb5ee"
+      "bytes": 4259,
+      "sha256": "530afdfd0c16de56325217e33ebebe61f167ccc4c46307f0fb73b12aae7bda10"
     },
     "src/rsi_anything_gui/gui_world.py": {
       "bytes": 21508,
@@ -1715,6 +1715,10 @@
     "tests/test_release.py": {
       "bytes": 6629,
       "sha256": "70b4d9f6426970b26b12b2e16409874a788d61c6980c663de157d3b0d75a8bcb"
+    },
+    "tests/test_timeouts.py": {
+      "bytes": 4899,
+      "sha256": "6c563c3151fd62c16a4aad53b6853396870c27b1c39be59178a8d06d8927f597"
     },
     "vendor/jepa-anything-core/LICENSE": {
       "bytes": 11358,
