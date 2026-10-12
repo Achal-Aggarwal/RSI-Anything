@@ -56,13 +56,13 @@
 
 ## 应用领域
 
-| 领域 | 任务与环境 | RSI-Anything 的作用 |
-| :--- | :--- | :--- |
-| **代码修复** | CodeContests、APPS Introductory、LiveCodeBench | 预测程序执行结果，排序候选代码，并依据测试反馈改进解题程序。 |
-| **GUI 交互** | MiniWoB++、OSWorld | 连接界面观测、动作候选和交互反馈，提高任务完成能力。 |
-| **实验室规划** | LabHorizon F200 | 预测实验操作序列的后果，通过连续策略版本改进符合实验协议的计划。 |
-| **反应优化** | Suzuki–Miyaura 反应筛选 | 依据产率预测选择催化剂、配体、碱和溶剂，用实测产率指导后续实验。 |
-| **免疫科学** | 科学 Agent 工作流与干预分析 | 连接工作流演化、免疫状态预测与自我修正，支持干预排序和前瞻性假设生成。 |
+| 领域 | 任务与环境 | RSI-Anything 的作用 | Hugging Face 资源 |
+| :--- | :--- | :--- | :--- |
+| **代码修复** | CodeContests、APPS Introductory、LiveCodeBench | 预测程序执行结果，排序候选代码，并依据测试反馈改进解题程序。 | [世界模型与推理资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/code_repair) |
+| **GUI 交互** | MiniWoB++、OSWorld | 连接界面观测、动作候选和交互反馈，提高任务完成能力。 | [世界模型与策略 adapter](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction) |
+| **实验室规划** | LabHorizon F200 | 预测实验操作序列的后果，通过连续策略版本改进符合实验协议的计划。 | [JEPA 世界模型](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning) |
+| **反应优化** | Suzuki–Miyaura 反应筛选 | 依据产率预测选择催化剂、配体、碱和溶剂，用实测产率指导后续实验。 | [产率预测世界模型](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/reaction_optimization) |
+| **免疫科学** | 科学 Agent 工作流与干预分析 | 连接工作流演化、免疫状态预测与自我修正，支持干预排序和前瞻性假设生成。 | [资源发布规划](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/immune_science) |
 
 领域适配器将统一工作流连接到各任务的状态、动作空间和外部反馈。
 

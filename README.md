@@ -58,13 +58,13 @@ The framework connects prediction-guided interaction with persistent improvement
 
 ## Domains
 
-| Domain | Tasks and environments | Role of RSI-Anything |
-| :--- | :--- | :--- |
-| **Code repair** | CodeContests, APPS Introductory, LiveCodeBench | Rank candidate programs using predicted execution outcomes and refine solutions with test feedback. |
-| **GUI interaction** | MiniWoB++ and OSWorld | Connect observations, action proposals and interaction feedback to improve task completion. |
-| **Laboratory planning** | LabHorizon F200 | Predict the consequences of laboratory action sequences and improve protocol-aligned plans across successive policy versions. |
-| **Reaction optimization** | Suzuki–Miyaura reaction screens | Rank catalyst, ligand, base and solvent choices using yield predictions, then use measured yields to guide subsequent experiments. |
-| **Immune science** | Scientific-agent workflows and intervention analysis | Connect workflow evolution, immune-state forecasting and self-correction to intervention ranking and prospective hypothesis generation. |
+| Domain | Tasks and environments | Role of RSI-Anything | Hugging Face resources |
+| :--- | :--- | :--- | :--- |
+| **Code repair** | CodeContests, APPS Introductory, LiveCodeBench | Rank candidate programs using predicted execution outcomes and refine solutions with test feedback. | [World models & inference](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/code_repair) |
+| **GUI interaction** | MiniWoB++ and OSWorld | Connect observations, action proposals and interaction feedback to improve task completion. | [World model & policy adapter](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction) |
+| **Laboratory planning** | LabHorizon F200 | Predict the consequences of laboratory action sequences and improve protocol-aligned plans across successive policy versions. | [JEPA world models](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning) |
+| **Reaction optimization** | Suzuki–Miyaura reaction screens | Rank catalyst, ligand, base and solvent choices using yield predictions, then use measured yields to guide subsequent experiments. | [Yield prediction world model](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/reaction_optimization) |
+| **Immune science** | Scientific-agent workflows and intervention analysis | Connect workflow evolution, immune-state forecasting and self-correction to intervention ranking and prospective hypothesis generation. | [Release roadmap](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/immune_science) |
 
 Domain adapters connect the shared workflow to each task's states, action space and external feedback.
 
