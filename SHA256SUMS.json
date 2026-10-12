@@ -527,6 +527,8 @@
   "tasks/gui/vendor/jepa-anything-core/tests/test_losses.py": "145b452d79e77dab005d18cd8cb34794918e6ea609399d22cc6afb62c838670b",
   "tasks/gui/vendor/jepa-anything-core/tests/test_opf.py": "4dd671d006c20f3c61bc2810f6ce7d228d663df5a8757fe060b73bed0cc2552e",
   "tasks/gui/vendor/miniwob-plusplus/LICENSE": "fd6529fb8f648d4130fd969e3d7fc740c9992a0bd94a1998f52555a873311511",
+  "tasks/immune_science_v2/README.md": "f6e883a9e7924b70ce8c64358ace924b65b863c1949e87f1f23428906c6c5113",
+  "tasks/immune_science_v2/README.zh-CN.md": "8a3f5a7ca693b619188c2da2504a1feab075c02c53622de080de92951c8aaa4a",
   "tasks/laboratory_planning/README.md": "c1edfe3c0f29179c340786f17cfcfc3a534f9d44c23a0c168507c52b671a9735",
   "tasks/laboratory_planning/README.zh-CN.md": "4c79f5568aad5e5514588e807ab7f7066e7be8f2541e4af7f2e7185375832b07",
   "tasks/laboratory_planning/examples/candidates.jsonl": "2a05e35d5767cffb888d880c22317d49f8f0e088f4076630920d8402e097f8c9",
