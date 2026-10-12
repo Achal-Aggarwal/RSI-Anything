@@ -24,6 +24,9 @@
 </p>
 
 <p align="center">
+  <a href="https://arxiv.org/abs/2610.13912">
+    <img src="https://img.shields.io/badge/arXiv-2610.13912-B31B1B?style=plastic&amp;logo=arxiv&amp;logoColor=white&amp;labelColor=555555" alt="arXiv · RSI-Anything" height="28">
+  </a>
   <a href="https://huggingface.co/datasets/Gen-Verse/RSI-Anything">
     <img src="https://img.shields.io/badge/Hugging%20Face-RSI--Anything-FFB000?style=plastic&amp;logo=huggingface&amp;logoColor=FFD21E&amp;labelColor=555555" alt="Hugging Face · RSI-Anything" height="28">
   </a>
@@ -195,7 +198,10 @@ If you use RSI-Anything in your research, please cite:
 @misc{cui2026rsianything,
   title={RSI-Anything: Unlocking Recursive Self-Improvement with World Models},
   author={Cui, Taoyong and Zeng, Pinxian and Xu, Wanghan and Xiao, Hao and Xue, Shuhan and Gao, Qiang and Ouyang, Wanli and Heng, Pheng Ann and Yin, Zhenfei and Wu, Yingcheng and Yang, Ling},
-  year={2026}
+  year={2026},
+  eprint={2610.13912},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2610.13912}
 }
 ```
 
