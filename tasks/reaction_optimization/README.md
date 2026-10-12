@@ -70,20 +70,6 @@ The [candidate catalog and predictions](assets/suzuki_prior.json) cover electrop
 
 The [example recommendation](examples/recommendation.json) is generated from the synthetic input above. Selection returns one condition at a time, with equal scores resolved by the smaller candidate ID. Inference stops with a clear error when all candidates have been measured.
 
-## World-model adaptation
-
-ReactionT5 encodes reaction SMILES. Eight JEPA predictor groups of 96 coordinates are composed by OPF into a 768-dimensional predicted reaction state. The Suzuki readout uses 32 PCA coordinates, the raw JEPA yield prediction and one-hot representations of six condition fields.
-
-An ExtraTrees readout with 256 trees, minimum leaf size 10 and `max_features=0.8` was fitted to **4,709 auxiliary rows**. All **321 target conditions** were excluded from fitting and calibration selection. Five grouped validation folds cover 14 auxiliary reaction contexts; PCA and categorical encoding are fitted within each training fold. Calibration was selected from 162 settings using equally weighted auxiliary-group regret over observations 9–16.
-
-The selected mean is unchanged. Ensemble uncertainty is calibrated as:
-
-```text
-std_calibrated = sqrt((0.5 * std_ensemble)^2 + 5.0^2)
-```
-
-The auxiliary readout's ensemble standard deviation has a floor of 3 percentage points before calibration. Gaussian expected improvement uses `xi=0.01` percentage points. Parameters were sealed before target evaluation. The included JSON prediction table preserves the calibrated inference arrays exactly and contains condition names and predictions. Measured target yields remain in the evaluation environment.
-
 ## Python API
 
 From the repository root:
