@@ -36,7 +36,7 @@
 
 ## Overview
 
-**RSI-Anything** is a domain-general framework that turns world-model predictions and interaction feedback into recursive self-improvement. Built on **JEPA-Anything**, it connects candidate generation, prediction-guided selection, external evaluation and learning in a shared process.
+**RSI-Anything** is a domain-general framework that turns world-model predictions and interaction feedback into recursive self-improvement. Built on [**JEPA-Anything**](https://github.com/Gen-Verse/JEPA-Anything), it connects candidate generation, prediction-guided selection, external evaluation and learning in a shared process.
 
 The paper applies this process to **code repair, GUI interaction, laboratory planning, reaction optimization and immune science**. Each domain supplies its own state, actions, prediction targets and feedback, while using the same cycle of proposing candidates, anticipating consequences, evaluating selected actions and retaining improvements for subsequent rounds.
 
