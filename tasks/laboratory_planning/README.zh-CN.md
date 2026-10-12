@@ -23,10 +23,10 @@ python -m pip install -r tasks/laboratory_planning/requirements.txt
 export MODEL_DIR="$PWD/models/laboratory_planning"
 ```
 
-| 推理组件 | 基座或 checkpoint | 策略 adapter |
+| 推理组件 | 基座或架构 | Adapter 或 checkpoint |
 | :--- | :--- | :--- |
 | JEPA 候选生成 | [Qwen3.5-4B-Base](https://huggingface.co/Qwen/Qwen3.5-4B-Base) | 种子 1401、1402、1403 对应的 P4 |
-| JEPA 世界模型 | [世界模型 checkpoint](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning/checkpoints) | — |
+| JEPA 世界模型 | JEPA-Anything | [Hugging Face checkpoint](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning/checkpoints) |
 
 通过 `--adapter` 指定本地策略 adapter 目录。下载世界模型：
 

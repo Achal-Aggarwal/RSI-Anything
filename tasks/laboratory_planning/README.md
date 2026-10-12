@@ -23,10 +23,10 @@ python -m pip install -r tasks/laboratory_planning/requirements.txt
 export MODEL_DIR="$PWD/models/laboratory_planning"
 ```
 
-| Inference component | Backbone or checkpoint | Adapter |
+| Inference component | Backbone or architecture | Adapter or checkpoint |
 | :--- | :--- | :--- |
 | JEPA candidate generation | [Qwen3.5-4B-Base](https://huggingface.co/Qwen/Qwen3.5-4B-Base) | P4 for seed 1401, 1402 or 1403 |
-| JEPA world model | [World checkpoints](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning/checkpoints) | — |
+| JEPA world model | JEPA-Anything | [Hugging Face checkpoints](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning/checkpoints) |
 
 Pass the local policy adapter directory with `--adapter`. Download the world checkpoints with:
 
