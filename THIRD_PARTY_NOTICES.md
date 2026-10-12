@@ -10,6 +10,7 @@ Built with Qwen.
 | Qwen2.5-Coder-3B-Instruct | Qwen Research License; `tasks/gui/licenses/Qwen2.5-Coder-3B-Instruct.LICENSE`; base revision pinned in the asset catalog |
 | ReasonFlux-Coder-7B | Upstream model card identifies MIT; retain its model card and underlying base-model notices with downloaded weights |
 | CodeContests | Upstream code: Apache-2.0; non-code materials: CC BY 4.0, with the source-specific notices listed upstream |
+| ReactionT5–JEPA Suzuki adaptation | ReactionT5: MIT, `tasks/reaction_optimization/licenses/ReactionT5v2-LICENSE.txt`; JEPA: Apache-2.0, `tasks/reaction_optimization/licenses/JEPA-Anything-LICENSE` |
 | Laboratory JEPA-Anything inference | Apache-2.0; `tasks/laboratory_planning/licenses/JEPA-Anything.LICENSE` |
 | LabHorizon plan parser | MIT; `tasks/laboratory_planning/licenses/LabHorizon-parser.LICENSE` |
 

@@ -78,7 +78,7 @@
 | GUI 交互 | MiniWoB++ `click-checkboxes` | 任务成功率 **99%**，平均动作数较基线减少 **39.4%** |
 | GUI 交互 | OSWorld | 相对初始 Agent 的成功率提升 **18.4%** |
 | 实验室规划 | [LabHorizon F200 Level 2](tasks/laboratory_planning/README.zh-CN.md) | 规划得分 **46.01%** |
-| 反应优化 | Flow LC–MS 筛选，40 次实验 | 平均最优实测产率 **96.15%**，贝叶斯优化为 **82.16%** |
+| 反应优化 | [Suzuki Flow LC–MS，100 次运行](tasks/reaction_optimization/README.zh-CN.md) | 平均最优实测产率 **96.15%**；所有运行在第 **10** 次观测以内找到候选池最高产率 |
 | 免疫科学 | 端到端科学应用 | 提出结合 **SIRPα 抑制与 IL-36γ 轴调节**的候选方案，用于后续实验检验 |
 
 ### 代码修复
@@ -128,6 +128,7 @@ rsi tasks
 | :--- | :--- | :--- |
 | **代码修复** | [环境、资产与复现](docs/reproduction.md) | `configs/code_repair/default.json` |
 | **GUI 交互** | [完整浏览器 Agent 实验](tasks/gui/README_zh.md) | `configs/gui/default.json` |
+| **反应优化** | [Suzuki 条件选择与结果](tasks/reaction_optimization/README.zh-CN.md) | `tasks/reaction_optimization/infer.py` |
 
 实验室规划见[推理指南](tasks/laboratory_planning/README.zh-CN.md)，使用 JEPA 世界模型引导候选生成与方案选择。
 
@@ -176,7 +177,8 @@ rsi report --run runs/gui
 ├── tasks/
 │   ├── code_repair/       # 程序执行、训练与评价
 │   ├── gui/               # 浏览器交互、训练与评价
-│   └── laboratory_planning/ # 规划策略与 JEPA 世界模型推理
+│   ├── laboratory_planning/ # 规划策略与 JEPA 世界模型推理
+│   └── reaction_optimization/ # 已校准的 JEPA 引导 Suzuki 条件选择
 ├── configs/              # 任务配置
 ├── tests/                # 公共工作流检查
 ├── scripts/              # 资产打包与仓库校验

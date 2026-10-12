@@ -80,7 +80,7 @@ Results across domains. See [benchmark settings](docs/benchmarks.md) for task de
 | GUI interaction | MiniWoB++ `click-checkboxes` | **99%** task success; **39.4%** fewer actions than the baseline |
 | GUI interaction | OSWorld | **18.4%** relative success-rate gain over the initial agent |
 | Laboratory planning | [LabHorizon F200, Level 2](tasks/laboratory_planning/README.md) | **46.01%** planning score |
-| Reaction optimization | Flow LC–MS screen, 40 experiments | **96.15%** mean best observed yield versus **82.16%** for Bayesian optimization |
+| Reaction optimization | [Suzuki flow LC–MS, 100 runs](tasks/reaction_optimization/README.md) | **96.15%** mean best observed yield; all runs find the pool optimum by observation **10** |
 | Immune science | End-to-end scientific application | Prospective nomination combining **SIRPα inhibition and IL-36γ-axis modulation** for experimental testing |
 
 ### Code repair
@@ -130,6 +130,7 @@ rsi tasks
 | :--- | :--- | :--- |
 | **Code repair** | [Environment, assets and reproduction](docs/reproduction.en.md) | `configs/code_repair/default.json` |
 | **GUI interaction** | [Complete browser-agent experiment](tasks/gui/README.md) | `configs/gui/default.json` |
+| **Reaction optimization** | [Suzuki condition selection and results](tasks/reaction_optimization/README.md) | `tasks/reaction_optimization/infer.py` |
 
 For laboratory planning, follow the [inference guide](tasks/laboratory_planning/README.md) for JEPA-guided candidate generation and plan selection.
 
@@ -178,7 +179,8 @@ rsi report --run runs/gui
 ├── tasks/
 │   ├── code_repair/       # Program execution, training and evaluation
 │   ├── gui/               # Browser interaction, training and evaluation
-│   └── laboratory_planning/ # Planning-policy and JEPA world-model inference
+│   ├── laboratory_planning/ # Planning-policy and JEPA world-model inference
+│   └── reaction_optimization/ # Calibrated JEPA-guided Suzuki condition selection
 ├── configs/              # Task recipes
 ├── tests/                # Shared workflow checks
 ├── scripts/              # Asset packaging and repository verification
