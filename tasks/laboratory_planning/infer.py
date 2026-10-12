@@ -1,4 +1,4 @@
-"""Run a frozen planning policy or JEPA world model on laboratory tasks."""
+"""Run JEPA-guided laboratory planning or select existing candidate plans."""
 from pathlib import Path
 import sys
 

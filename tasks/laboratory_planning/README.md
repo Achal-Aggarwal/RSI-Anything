@@ -6,17 +6,13 @@
 
 LabHorizon Level 2 asks an agent to plan a sequence of laboratory operations from an experimental context, a goal, available materials, constraints and an action library. A plan specifies which operations to perform, their parameters and how intermediate products pass between steps.
 
-This module provides frozen planning-policy inference and JEPA-Anything world-model selection. The planning policy proposes candidate plans; the world model predicts their quality, improvement, risk and uncertainty, then selects the next plan.
+JEPA-Anything guides the choice of laboratory plans. A planning agent proposes four candidates, and the world model forecasts their quality, improvement, risk and uncertainty to select the next plan.
 
 ## Results
 
-The final **M_SFT100_E2** planning policy reaches **46.01%** on the 200-task LabHorizon F200 evaluation.
-
-| Evaluation | Final policy | Action sequence similarity | Parameter accuracy | Final score |
-| :--- | :--- | ---: | ---: | ---: |
-| LabHorizon F200 · Level 2 · 200 tasks | M_SFT100_E2 | 45.79% | 46.23% | **46.01%** |
-
-The final score is the mean of action sequence similarity and parameter accuracy. Final-policy inference uses greedy generation, action-signature repair and a limit of 13 action calls.
+| Task | Evaluation size | Paper result |
+| :--- | ---: | ---: |
+| LabHorizon F200 · Level 2 | 200 tasks | **46.01%** |
 
 ## Setup
 
@@ -29,7 +25,6 @@ export MODEL_DIR="$PWD/models/laboratory_planning"
 
 | Inference component | Backbone or checkpoint | Adapter |
 | :--- | :--- | :--- |
-| Final planning policy | [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) | M_SFT100_E2 |
 | JEPA candidate generation | [Qwen3.5-4B-Base](https://huggingface.co/Qwen/Qwen3.5-4B-Base) | P4 for seed 1401, 1402 or 1403 |
 | JEPA world model | [World checkpoints](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning/checkpoints) | — |
 
@@ -55,21 +50,6 @@ Use JSONL with one task per line:
 | `action_pool` | Python definitions of the available operations |
 
 The [task example](examples/tasks.jsonl) illustrates the input format. Plans use Python calls to the supplied operations, with keyword arguments and named intermediate products.
-
-## Final planning policy
-
-Generate final plans with M_SFT100_E2:
-
-```bash
-python tasks/laboratory_planning/infer.py policy \
-  --base-model Qwen/Qwen3-4B-Instruct-2507 \
-  --adapter "$MODEL_DIR/M_SFT100_E2" \
-  --input tasks.jsonl \
-  --output outputs/final_plans.jsonl \
-  --device cuda:0
-```
-
-Each output contains the task identifier, raw model response, final `completion` and postprocessing details.
 
 ## Planning with the JEPA world model
 
@@ -108,9 +88,9 @@ Candidate selection runs on CPU. Outputs include the selected candidate, final `
 | File | Purpose |
 | :--- | :--- |
 | [infer.py](infer.py) | Inference command line |
-| [policy.py](src/lab_inference/policy.py) | Frozen policy loading and generation |
+| [generator.py](src/lab_inference/generator.py) | Candidate plan generation |
 | [world.py](src/lab_inference/world.py) | JEPA forecasts and candidate selection |
 | [features.py](src/lab_inference/features.py) | Task text and plan-structure features |
-| [postprocess.py](src/lab_inference/postprocess.py) | Action-signature repair and plan length control |
+| [postprocess.py](src/lab_inference/postprocess.py) | Candidate plan normalization |
 
 JEPA-Anything components retain [Apache-2.0](licenses/JEPA-Anything.LICENSE); the LabHorizon plan parser retains [MIT](licenses/LabHorizon-parser.LICENSE).

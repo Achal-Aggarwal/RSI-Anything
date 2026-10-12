@@ -62,7 +62,7 @@ The framework connects prediction-guided interaction with persistent improvement
 | :--- | :--- | :--- | :--- |
 | **Code repair** | CodeContests, APPS Introductory, LiveCodeBench | Rank candidate programs using predicted execution outcomes and refine solutions with test feedback. | [World models & inference](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/code_repair) |
 | **GUI interaction** | MiniWoB++ and OSWorld | Connect observations, action proposals and interaction feedback to improve task completion. | [World model & policy adapter](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction) |
-| **Laboratory planning** | LabHorizon F200 | Predict the consequences of laboratory action sequences and improve protocol-aligned plans across successive policy versions. | [JEPA world models](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning) |
+| **Laboratory planning** | LabHorizon F200 | Predict candidate plan quality and risk to select protocol-aligned laboratory action sequences. | [JEPA world models](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning) |
 | **Reaction optimization** | Suzuki–Miyaura reaction screens | Rank catalyst, ligand, base and solvent choices using yield predictions, then use measured yields to guide subsequent experiments. | [Yield prediction world model](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/reaction_optimization) |
 | **Immune science** | Scientific-agent workflows and intervention analysis | Connect workflow evolution, immune-state forecasting and self-correction to intervention ranking and prospective hypothesis generation. | [Release roadmap](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/immune_science) |
 
@@ -79,7 +79,7 @@ Results across domains. See [benchmark settings](docs/benchmarks.md) for task de
 | Code repair | LiveCodeBench v6, 1,055 problems | **33.05%** final full-test success |
 | GUI interaction | MiniWoB++ `click-checkboxes` | **99%** task success; **39.4%** fewer actions than the baseline |
 | GUI interaction | OSWorld | **18.4%** relative success-rate gain over the initial agent |
-| Laboratory planning | [LabHorizon F200, Level 2](tasks/laboratory_planning/README.md) | **21.80% → 46.01%** across five successive 4B policy versions |
+| Laboratory planning | [LabHorizon F200, Level 2](tasks/laboratory_planning/README.md) | **46.01%** planning score |
 | Reaction optimization | Flow LC–MS screen, 40 experiments | **96.15%** mean best observed yield versus **82.16%** for Bayesian optimization |
 | Immune science | End-to-end scientific application | Prospective nomination combining **SIRPα inhibition and IL-36γ-axis modulation** for experimental testing |
 
@@ -131,7 +131,7 @@ rsi tasks
 | **Code repair** | [Environment, assets and reproduction](docs/reproduction.en.md) | `configs/code_repair/default.json` |
 | **GUI interaction** | [Complete browser-agent experiment](tasks/gui/README.md) | `configs/gui/default.json` |
 
-For laboratory planning, follow the [inference guide](tasks/laboratory_planning/README.md) to generate plans with the final policy or select candidates with the JEPA world model.
+For laboratory planning, follow the [inference guide](tasks/laboratory_planning/README.md) for JEPA-guided candidate generation and plan selection.
 
 On Linux, follow the task guide to prepare `.venv-code-repair` or `.venv-gui`, and set runtime paths and GPU assignments in the recipe. Then launch the corresponding workflow:
 

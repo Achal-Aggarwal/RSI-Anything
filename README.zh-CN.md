@@ -60,7 +60,7 @@
 | :--- | :--- | :--- | :--- |
 | **代码修复** | CodeContests、APPS Introductory、LiveCodeBench | 预测程序执行结果，排序候选代码，并依据测试反馈改进解题程序。 | [世界模型与推理资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/code_repair) |
 | **GUI 交互** | MiniWoB++、OSWorld | 连接界面观测、动作候选和交互反馈，提高任务完成能力。 | [世界模型与策略 adapter](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction) |
-| **实验室规划** | LabHorizon F200 | 预测实验操作序列的后果，通过连续策略版本改进符合实验协议的计划。 | [JEPA 世界模型](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning) |
+| **实验室规划** | LabHorizon F200 | 预测候选方案的质量与风险，选择符合实验协议的操作计划。 | [JEPA 世界模型](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning) |
 | **反应优化** | Suzuki–Miyaura 反应筛选 | 依据产率预测选择催化剂、配体、碱和溶剂，用实测产率指导后续实验。 | [产率预测世界模型](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/reaction_optimization) |
 | **免疫科学** | 科学 Agent 工作流与干预分析 | 连接工作流演化、免疫状态预测与自我修正，支持干预排序和前瞻性假设生成。 | [资源发布规划](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/immune_science) |
 
@@ -77,7 +77,7 @@
 | 代码修复 | LiveCodeBench v6，1,055 道题 | 最终完整测试通过率 **33.05%** |
 | GUI 交互 | MiniWoB++ `click-checkboxes` | 任务成功率 **99%**，平均动作数较基线减少 **39.4%** |
 | GUI 交互 | OSWorld | 相对初始 Agent 的成功率提升 **18.4%** |
-| 实验室规划 | [LabHorizon F200 Level 2](tasks/laboratory_planning/README.zh-CN.md) | 五个连续 4B 策略版本从 **21.80% 提高到 46.01%** |
+| 实验室规划 | [LabHorizon F200 Level 2](tasks/laboratory_planning/README.zh-CN.md) | 规划得分 **46.01%** |
 | 反应优化 | Flow LC–MS 筛选，40 次实验 | 平均最优实测产率 **96.15%**，贝叶斯优化为 **82.16%** |
 | 免疫科学 | 端到端科学应用 | 提出结合 **SIRPα 抑制与 IL-36γ 轴调节**的候选方案，用于后续实验检验 |
 
@@ -129,7 +129,7 @@ rsi tasks
 | **代码修复** | [环境、资产与复现](docs/reproduction.md) | `configs/code_repair/default.json` |
 | **GUI 交互** | [完整浏览器 Agent 实验](tasks/gui/README_zh.md) | `configs/gui/default.json` |
 
-实验室规划见[推理指南](tasks/laboratory_planning/README.zh-CN.md)，可使用最终策略生成方案，或由 JEPA 世界模型选择候选方案。
+实验室规划见[推理指南](tasks/laboratory_planning/README.zh-CN.md)，使用 JEPA 世界模型引导候选生成与方案选择。
 
 在 Linux 上按照任务指南准备 `.venv-code-repair` 或 `.venv-gui`，并在配置中设置运行路径和 GPU 分配，然后启动对应工作流：
 

@@ -36,20 +36,18 @@ def requests(path):
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
     modes = parser.add_subparsers(dest="mode", required=True)
-    for mode, description in [("policy", "Generate final plans with M_SFT100_E2"),
-                              ("world", "Generate four plans and select with JEPA"),
+    for mode, description in [("world", "Generate four plans and select with JEPA"),
                               ("select", "Select from four supplied plans with JEPA")]:
         command = modes.add_parser(mode, help=description)
         command.add_argument("--input", type=Path, required=True)
         command.add_argument("--output", type=Path, required=True)
-        if mode != "select":
+        if mode == "world":
             command.add_argument("--base-model", required=True, help="Model ID or local backbone folder")
             command.add_argument("--adapter", type=Path, required=True, help="Local policy adapter folder")
             command.add_argument("--device", default="cuda:0")
             command.add_argument("--dtype", choices=["bf16", "fp32"], default="bf16")
-        if mode != "policy":
-            command.add_argument("--world-dir", type=Path, required=True, help="JEPA checkpoint folder")
-            command.add_argument("--include-factors", action="store_true")
+        command.add_argument("--world-dir", type=Path, required=True, help="JEPA checkpoint folder")
+        command.add_argument("--include-factors", action="store_true")
         if mode == "world":
             command.add_argument("--seed", type=int, choices=[1401, 1402, 1403], default=1401)
     return parser.parse_args()
@@ -59,29 +57,23 @@ def main():
     args = parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)
-    policy = world = None
-    if args.mode != "select":
-        from .policy import PlanningPolicy
-        policy = PlanningPolicy(args.base_model, args.adapter,
-                                family="qwen3" if args.mode == "policy" else "qwen35",
-                                device=args.device, dtype=args.dtype)
-    if args.mode != "policy":
-        from .world import JEPAWorld
-        world = JEPAWorld(args.world_dir)
-        if args.mode == "world" and world.config["seed"] != args.seed:
-            raise ValueError("Use a world checkpoint matching --seed")
+    generator = None
+    if args.mode == "world":
+        from .generator import CandidateGenerator
+        generator = CandidateGenerator(args.base_model, args.adapter, device=args.device, dtype=args.dtype)
+    from .world import JEPAWorld
+    world = JEPAWorld(args.world_dir)
+    if args.mode == "world" and world.config["seed"] != args.seed:
+        raise ValueError("Use a world checkpoint matching --seed")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     count = 0
     with args.output.open("x", encoding="utf-8") as output:
         for task, row in requests(args.input):
-            if args.mode == "policy":
-                result = policy.predict(task)
-            else:
-                candidates = policy.candidates(task, args.seed) if policy else row["candidates"]
-                forecast = world.forecast(task, candidates, args.include_factors)
-                result = {"id": task["id"], "completion": candidates[forecast["index"]]["completion"],
-                          "seed": world.config["seed"], "selected_candidate_id": forecast["candidate_id"],
-                          "candidates": candidates, "forecast": forecast}
+            candidates = generator.candidates(task, args.seed) if generator else row["candidates"]
+            forecast = world.forecast(task, candidates, args.include_factors)
+            result = {"id": task["id"], "completion": candidates[forecast["index"]]["completion"],
+                      "seed": world.config["seed"], "selected_candidate_id": forecast["candidate_id"],
+                      "candidates": candidates, "forecast": forecast}
             output.write(json.dumps(result, ensure_ascii=False, allow_nan=False) + "\n")
             output.flush()
             count += 1

@@ -1,1 +1,1 @@
-"""Frozen planning-policy and JEPA world-model inference."""
+"""JEPA-guided laboratory planning inference."""
