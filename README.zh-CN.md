@@ -62,7 +62,7 @@
 | **GUI 交互** | MiniWoB++、OSWorld | 连接界面观测、动作候选和交互反馈，提高任务完成能力。 | [资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction) |
 | **实验室规划** | LabHorizon F200 | 预测候选方案的质量与风险，选择符合实验协议的操作计划。 | [资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning) |
 | **反应优化** | Suzuki–Miyaura 反应筛选 | 依据产率预测选择催化剂、配体、碱和溶剂，用实测产率指导后续实验。 | [资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/reaction_optimization) |
-| **免疫科学** | 科学 Agent 工作流与干预分析 | 连接工作流演化、免疫状态预测与自我修正，支持干预排序和前瞻性假设生成。 | [资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/immune_science) |
+| **[免疫科学](tasks/immune_science_v2/README.zh-CN.md)** | 科学 Agent 工作流与干预分析 | 连接工作流演化、免疫状态预测与自我修正，支持干预排序和前瞻性假设生成。 | [资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/immune_science) |
 
 领域适配器将统一工作流连接到各任务的状态、动作空间和外部反馈。
 
@@ -178,7 +178,8 @@ rsi report --run runs/gui
 │   ├── code_repair/       # 程序执行、训练与评价
 │   ├── gui/               # 浏览器交互、训练与评价
 │   ├── laboratory_planning/ # 规划策略与 JEPA 世界模型推理
-│   └── reaction_optimization/ # 已校准的 JEPA 引导 Suzuki 条件选择
+│   ├── reaction_optimization/ # 已校准的 JEPA 引导 Suzuki 条件选择
+│   └── immune_science_v2/   # 免疫世界模型（即将公开）
 ├── configs/              # 任务配置
 ├── tests/                # 公共工作流检查
 ├── scripts/              # 资产打包与仓库校验

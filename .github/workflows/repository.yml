@@ -19,3 +19,12 @@ jobs:
       - run: rsi plan --config configs/code_repair/default.json
       - run: rsi plan --config configs/gui/default.json
       - run: python scripts/verify_repository.py
+      - name: Check laboratory inference CLI
+        run: |
+          python tasks/laboratory_planning/infer.py world --help
+          python tasks/laboratory_planning/infer.py select --help
+      - name: Check reaction optimization
+        run: |
+          python -m pip install -r tasks/reaction_optimization/requirements.txt
+          python -m unittest discover -s tasks/reaction_optimization/tests -v
+          python tasks/reaction_optimization/scripts/verify_assets.py

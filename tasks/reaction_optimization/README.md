@@ -4,6 +4,12 @@ Select the next Suzuki–Miyaura reaction condition using a calibrated ReactionT
 
 [简体中文](README.zh-CN.md) · [RSI-Anything](../../README.md)
 
+<p>
+  <a href="https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/reaction_optimization">
+    <img src="https://img.shields.io/badge/Hugging%20Face-RSI--Anything-FFB000?style=plastic&amp;logo=huggingface&amp;logoColor=FFD21E&amp;labelColor=555555" alt="Hugging Face · RSI-Anything" height="28">
+  </a>
+</p>
+
 ## Results
 
 The frozen Suzuki adapter was evaluated by sequentially replaying measured yields from a flow LC–MS screen. Each run starts with eight measured conditions and has a total budget of 40 distinct observations, including the initial eight.

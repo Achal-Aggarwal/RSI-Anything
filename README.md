@@ -64,7 +64,7 @@ The framework connects prediction-guided interaction with persistent improvement
 | **GUI interaction** | MiniWoB++ and OSWorld | Connect observations, action proposals and interaction feedback to improve task completion. | [Resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction) |
 | **Laboratory planning** | LabHorizon F200 | Predict candidate plan quality and risk to select protocol-aligned laboratory action sequences. | [Resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning) |
 | **Reaction optimization** | Suzuki–Miyaura reaction screens | Rank catalyst, ligand, base and solvent choices using yield predictions, then use measured yields to guide subsequent experiments. | [Resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/reaction_optimization) |
-| **Immune science** | Scientific-agent workflows and intervention analysis | Connect workflow evolution, immune-state forecasting and self-correction to intervention ranking and prospective hypothesis generation. | [Resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/immune_science) |
+| **[Immune science](tasks/immune_science_v2/README.md)** | Scientific-agent workflows and intervention analysis | Connect workflow evolution, immune-state forecasting and self-correction to intervention ranking and prospective hypothesis generation. | [Resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/immune_science) |
 
 Domain adapters connect the shared workflow to each task's states, action space and external feedback.
 
@@ -180,7 +180,8 @@ rsi report --run runs/gui
 │   ├── code_repair/       # Program execution, training and evaluation
 │   ├── gui/               # Browser interaction, training and evaluation
 │   ├── laboratory_planning/ # Planning-policy and JEPA world-model inference
-│   └── reaction_optimization/ # Calibrated JEPA-guided Suzuki condition selection
+│   ├── reaction_optimization/ # Calibrated JEPA-guided Suzuki condition selection
+│   └── immune_science_v2/   # Immune world model (coming soon)
 ├── configs/              # Task recipes
 ├── tests/                # Shared workflow checks
 ├── scripts/              # Asset packaging and repository verification

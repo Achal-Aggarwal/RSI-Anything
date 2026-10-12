@@ -12023,7 +12023,7 @@
         }
       },
       "sha256": "583d97577863aad971d005168bf91c9ff5ac100837590e04dfaa45e2ab4edaba",
-      "url": "https://github.com/Gen-Verse/RSI-Anything/releases/download/untagged-ea631e1e3117e3e37b0b/evaluation.tar.gz"
+      "url": "https://github.com/Gen-Verse/RSI-Anything/releases/download/assets-v1/evaluation.tar.gz"
     },
     "training": {
       "api_url": "https://api.github.com/repos/Gen-Verse/RSI-Anything/releases/assets/627314321",
@@ -12228,7 +12228,7 @@
         }
       },
       "sha256": "3748eef3a94f3fe73ab176777a3108f7eb61002e9aeecb68ac708157becd90e4",
-      "url": "https://github.com/Gen-Verse/RSI-Anything/releases/download/untagged-ea631e1e3117e3e37b0b/training.tar.gz"
+      "url": "https://github.com/Gen-Verse/RSI-Anything/releases/download/assets-v1/training.tar.gz"
     }
   },
   "experiment_sha256": "54f459c3e9ca00f316da2e4042a6dbf88321d4ca7ff6e144a9be17140ed28d88",

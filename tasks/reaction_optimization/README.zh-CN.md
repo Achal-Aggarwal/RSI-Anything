@@ -4,6 +4,12 @@
 
 [English](README.md) · [RSI-Anything](../../README.zh-CN.md)
 
+<p>
+  <a href="https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/reaction_optimization">
+    <img src="https://img.shields.io/badge/Hugging%20Face-RSI--Anything-FFB000?style=plastic&amp;logo=huggingface&amp;logoColor=FFD21E&amp;labelColor=555555" alt="Hugging Face · RSI-Anything" height="28">
+  </a>
+</p>
+
 ## 结果
 
 在 Flow LC–MS 筛选数据上，以逐步揭示实测产率的方式进行离线顺序评测。每次运行从 8 个已测条件开始，总预算为 40 个不同条件，包含初始 8 个。
