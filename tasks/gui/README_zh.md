@@ -1,5 +1,7 @@
 # RSI-Anything：GUI 实验
 
+[Hugging Face 资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction)
+
 完整英文文档见 [README.md](README.md)。GUI 工作流涵盖采集、JEPA 世界模型训练、策略适配、控制器选择、交叉测试、条件确认、审计及统计。
 
 ## 实验结果

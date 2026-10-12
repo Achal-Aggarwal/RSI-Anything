@@ -1,5 +1,7 @@
 # RSI-Anything: GUI Experiment
 
+[Hugging Face resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction)
+
 Part of the RSI-Anything repository. See [repository integration](INTEGRATION.md) for environment isolation and module boundaries.
 
 Research code for **expert-assisted GUI policy adaptation with JEPA-Anything world models** on the official MiniWoB++ `click-checkboxes` task.

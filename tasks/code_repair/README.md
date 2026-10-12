@@ -1,5 +1,7 @@
 # Code-repair task
 
+[Hugging Face resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/code_repair)
+
 This task supplies program execution, candidate generation, world-model training and evaluation for the shared RSI workflow.
 
 From the repository root:
