@@ -19,7 +19,9 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square" alt="Python 3.10 and newer">
+  <a href="https://github.com/Gen-Verse/JEPA-Anything">
   <img src="https://img.shields.io/badge/Built_with-JEPA--Anything-258D88?style=flat-square" alt="Built with JEPA-Anything">
+  </a>
   <img src="https://img.shields.io/badge/License-Apache--2.0-2563EB?style=flat-square" alt="Apache-2.0 license">
 </p>
 
