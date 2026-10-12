@@ -2,7 +2,13 @@
 
 **使用 RSI-Anything，将实验目标转化为可执行的实验操作方案。**
 
-[English](README.md) · [RSI-Anything](../../README.zh-CN.md) · [Hugging Face 资源](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning)
+[English](README.md) · [RSI-Anything](../../README.zh-CN.md)
+
+<p>
+  <a href="https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning">
+    <img src="https://img.shields.io/badge/Hugging%20Face-RSI--Anything-FFB000?style=plastic&amp;logo=huggingface&amp;logoColor=FFD21E&amp;labelColor=555555" alt="Hugging Face · RSI-Anything" height="28">
+  </a>
+</p>
 
 LabHorizon Level 2 要求 Agent 根据实验背景、目标、现有材料、约束和操作库，规划完整的实验步骤。方案需要明确操作顺序、参数，以及中间产物在不同步骤之间的传递关系。
 

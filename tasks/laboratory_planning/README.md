@@ -2,7 +2,13 @@
 
 **Turn experimental objectives into executable laboratory plans with RSI-Anything.**
 
-[简体中文](README.zh-CN.md) · [RSI-Anything](../../README.md) · [Hugging Face resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning)
+[简体中文](README.zh-CN.md) · [RSI-Anything](../../README.md)
+
+<p>
+  <a href="https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/laboratory_planning">
+    <img src="https://img.shields.io/badge/Hugging%20Face-RSI--Anything-FFB000?style=plastic&amp;logo=huggingface&amp;logoColor=FFD21E&amp;labelColor=555555" alt="Hugging Face · RSI-Anything" height="28">
+  </a>
+</p>
 
 LabHorizon Level 2 asks an agent to plan a sequence of laboratory operations from an experimental context, a goal, available materials, constraints and an action library. A plan specifies which operations to perform, their parameters and how intermediate products pass between steps.
 

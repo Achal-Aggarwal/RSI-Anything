@@ -1,6 +1,10 @@
 # RSI-Anything: GUI Experiment
 
-[Hugging Face resources](https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction)
+<p>
+  <a href="https://huggingface.co/datasets/Gen-Verse/RSI-Anything/tree/main/gui_interaction">
+    <img src="https://img.shields.io/badge/Hugging%20Face-RSI--Anything-FFB000?style=plastic&amp;logo=huggingface&amp;logoColor=FFD21E&amp;labelColor=555555" alt="Hugging Face · RSI-Anything" height="28">
+  </a>
+</p>
 
 Part of the RSI-Anything repository. See [repository integration](INTEGRATION.md) for environment isolation and module boundaries.
 
