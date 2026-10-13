@@ -14,11 +14,32 @@ LabHorizon Level 2 asks an agent to plan a sequence of laboratory operations fro
 
 JEPA-Anything guides the choice of laboratory plans. A planning agent proposes four candidates, and the world model forecasts their quality, improvement, risk and uncertainty to select the next plan.
 
-## Results
+## RSI workflow
 
-| Task | Evaluation size | Paper result |
-| :--- | ---: | ---: |
-| LabHorizon F200 · Level 2 | 200 tasks | **46.01%** |
+RSI improves laboratory planning through repeated updates to a **planning policy and a JEPA world model**. Each round starts from the retained pair and uses task feedback to improve candidate generation and selection.
+
+### Learning rounds
+
+Starting with a trained initial pair, each round follows five steps:
+
+1. **Generate candidates.** The policy reads the task and proposes one greedy plan (`a1`) and three sampled plans (`a2`–`a4`). The greedy plan is the reference for predicted improvement.
+2. **Predict and select.** Check plan structure and rank legal candidates by predicted quality and improvement, with penalties for risk and uncertainty. Select the highest-scoring legal plan.
+3. **Collect candidate feedback.** On learning tasks, score all four candidates with the task evaluator and record action-order, parameter-accuracy and intermediate-product-dependency feedback together with the final planning score.
+4. **Update both models.** For each task, use the highest-scoring legal candidate to construct policy training examples and continue training from the retained policy. Refit the world model on accumulated task–candidate–evaluation records to form a new pair for validation.
+5. **Validate and retain.** Evaluate the new pair together on validation tasks, comparing planning quality and structural validity with the retained pair. A pair that passes acceptance becomes the starting point for the next round; otherwise the current pair is retained.
+
+**Recursion comes from carrying the accepted pair and accumulated experience into the next learning round.** The retained policy generates new candidates, and their evaluated outcomes on learning tasks extend the training data. World-model selections are used in joint validation, and the accepted pair becomes the starting point for the next improvement step.
+
+### Freeze and evaluate
+
+**The validation set and the F200 test set are separate splits with no overlapping tasks.** Learning tasks provide model-update examples, and validation tasks determine which policy–world-model pair is retained at each round. After learning and acceptance, freeze the retained pair and evaluate it on **LabHorizon F200**. F200 is reserved for evaluation and result reporting after the models are frozen.
+
+The published commands cover the **frozen inference stage**:
+
+- `infer.py world` generates four plans with a local planning adapter and selects one with the matching JEPA world checkpoint.
+- `infer.py select` applies the same world-model selection to four supplied candidate plans.
+
+Outputs contain the selected plan and its forecasts. The `forecast.feedback` fields are predictions of evaluation outcomes; the learning rounds use feedback from the task evaluator.
 
 ## Setup
 
