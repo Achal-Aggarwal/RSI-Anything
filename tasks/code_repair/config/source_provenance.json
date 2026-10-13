@@ -69,7 +69,9 @@
       "_run_one",
       "execute"
     ],
-    "packaged_sha256": "729bf6ca0a17b330827ec4378beba3ea3d1cb2c02173cbcf7928bf7c6352b821"
+    "packaged_sha256": "d623ce305aee77ea839745a0ed6f3b5757ece8b31b15b66765f984f2cf4da831",
+    "baseline_packaged_sha256": "729bf6ca0a17b330827ec4378beba3ea3d1cb2c02173cbcf7928bf7c6352b821",
+    "runtime_update": "Check sandbox readiness with a known correct program and raise environment errors separately from candidate results."
   },
   "coder.py": {
     "original_path": "experiment-source/cure_wm_lite/code/coder.py",

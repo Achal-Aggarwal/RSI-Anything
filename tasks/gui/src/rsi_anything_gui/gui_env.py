@@ -10,6 +10,12 @@ from .settings import ASSETS
 # Use Playwright's normal browser installation or the caller's explicit override.
 from playwright.sync_api import sync_playwright
 
+class EpisodeTerminated(RuntimeError):
+    """An episode ended before the requested action was applied."""
+    def __init__(self, observation):
+        super().__init__('Cannot act after termination')
+        self.observation = observation
+
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *args):
         pass
@@ -39,15 +45,19 @@ class GUIEnv:
           elements:Array.from(document.querySelectorAll('#boxes label')).map((e,i)=>({slot:i,ref:e.querySelector('input').id,label:e.innerText.trim(),checked:e.querySelector('input').checked})),
           done:Boolean(WOB_DONE_GLOBAL),raw_reward:Number(WOB_RAW_REWARD_GLOBAL),reward_reason:WOB_REWARD_REASON})''')
         obs.update(remaining_actions=max(0,self.max_steps-self.steps),submitted=self.submitted)
-        if self.steps>=self.max_steps or time.monotonic()-self.started>=120:
+        elapsed = time.monotonic()-self.started
+        if self.steps>=self.max_steps or elapsed>=120:
             obs['done']=True
             obs['budget_exhausted']=not self.submitted
+            if not self.submitted:
+                obs['termination_reason']='timeout' if elapsed>=120 else 'action_budget'
+                obs['elapsed_seconds']=elapsed
         return obs
 
     def step(self, action):
         before=self.observe()
         if before['done']:
-            raise RuntimeError('Cannot act after termination')
+            raise EpisodeTerminated(before)
         started=time.monotonic()
         if action['kind']=='click':
             slot=action['slot']

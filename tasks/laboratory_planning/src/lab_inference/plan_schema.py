@@ -95,6 +95,18 @@ def _latest_prior_producer(steps: list[Step], name: str, step_index: int) -> int
             return idx
     return None
 
+def _argument_names(arg: Argument) -> set[str]:
+    """Find variable reads in both simple and nested action arguments."""
+    if arg.kind == 'literal':
+        return set()
+    if arg.kind == 'name':
+        return {str(arg.value)}
+    if arg.kind != 'expression':
+        return set()
+    tree = ast.parse(str(arg.value), mode='eval')
+    return {node.id for node in ast.walk(tree)
+            if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load)}
+
 def is_valid_sequence(pred: list[Step], *, raw_inputs: set[str], action_pool_names: set[str] | None) -> tuple[bool, dict[str, Any]]:
     """I_Valid gate: actions in pool, no undefined / forward-referenced vars."""
     all_outputs = {step.output for step in pred if step.output}
@@ -103,17 +115,16 @@ def is_valid_sequence(pred: list[Step], *, raw_inputs: set[str], action_pool_nam
     future_vars: list[str] = []
     for idx, step in enumerate(pred):
         for arg in step.inputs.values():
-            if arg.kind != 'name':
-                continue
-            name = str(arg.value)
-            if name in raw_inputs or _latest_prior_producer(pred, name, idx) is not None:
-                continue
-            if name in all_outputs:
-                future_vars.append(name)
-            else:
-                unknown_vars.append(name)
-    valid = not unknown_actions and (not unknown_vars) and (not future_vars)
-    return (valid, {'unknown_actions': unknown_actions, 'unknown_vars': sorted(set(unknown_vars)), 'future_generated_vars': sorted(set(future_vars))})
+            for name in _argument_names(arg):
+                if name in raw_inputs or _latest_prior_producer(pred, name, idx) is not None:
+                    continue
+                if name in all_outputs:
+                    future_vars.append(name)
+                else:
+                    unknown_vars.append(name)
+    valid = not (unknown_actions or unknown_vars or future_vars)
+    return (valid, {'unknown_actions': unknown_actions, 'unknown_vars': sorted(set(unknown_vars)),
+                   'future_generated_vars': sorted(set(future_vars))})
 
 def code(text):
     fenced = re.search('```(?:python)?\\s*(.*?)```', text, re.IGNORECASE | re.DOTALL)

@@ -72,8 +72,25 @@ def episode_file(path,seeds,adapter=None,frozen_after=None):
     for outcome in outcomes:
         steps=groups[outcome['episode_id']]
         check(len(steps)==outcome['steps']<=8 and outcome['actions']==[r['action'] for r in steps],str(path)+': step/action trace mismatch')
-        check(outcome['final']==steps[-1]['after'] and outcome['success']==strict(outcome['final']),str(path)+': strict completion wrong')
-        check(outcome['initial_hash']==digest({k:steps[0]['before'][k] for k in ['instruction','elements']}),str(path)+': initial state identity wrong')
+        initial=outcome.get('initial',steps[0]['before'] if steps else None)
+        check(initial is not None,str(path)+': initial observation missing')
+        if initial is not None:
+            check(outcome['initial_hash']==digest({k:initial[k] for k in ['instruction','elements']}),str(path)+': initial state identity wrong')
+            if steps:check(initial==steps[0]['before'],str(path)+': first transition differs from reset')
+        termination=outcome.get('termination')
+        if termination:
+            before=steps[-1]['after'] if steps else initial
+            final=outcome['final'];reason=termination['reason']
+            check(termination['before']==before and termination['after']==final,str(path)+': termination observation chain broken')
+            check(final['done'] and not final['submitted'] and outcome['success']==0,str(path)+': invalid unapplied-action termination')
+            check(reason in {'timeout','action_budget','environment'} and reason==final.get('termination_reason','environment'),str(path)+': termination reason differs')
+            if before is not None:
+                check(all(before[k]==final[k] for k in ['instruction','elements','remaining_actions','submitted']),str(path)+': state changed without an action')
+            if reason=='timeout':check(final.get('elapsed_seconds',0)>=120,str(path)+': timeout before episode deadline')
+            if reason=='action_budget':check(final['remaining_actions']==0,str(path)+': budget termination with actions remaining')
+        else:
+            check(bool(steps) and outcome['final']==steps[-1]['after'],str(path)+': final observation differs from last action')
+        check(outcome['success']==strict(outcome['final']),str(path)+': strict completion wrong')
         check(outcome['adapter']==adapter and all(r['episode_success']==outcome['success'] for r in steps),str(path)+': policy or successful-episode lineage wrong')
         for a,b in zip(steps,steps[1:]):check(a['after']==b['before'],str(path)+': episode chain broken')
         if frozen_after is not None:check(outcome['started']>=frozen_after,str(path)+': test opened before freezing')
